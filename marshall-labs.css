@@ -1,0 +1,382 @@
+/* Marshall Labs design system
+   Dark-first, light-mode capable. All classes namespaced .ml-*.
+   Set theme on <html> or any ancestor: data-theme="dark" (default) | "light". */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root,
+[data-theme="dark"] {
+  --ml-bg:            #0a0e14;
+  --ml-surface:       #111820;
+  --ml-surface-2:     #0f151d;
+  --ml-border:        rgba(255, 255, 255, 0.08);
+  --ml-border-strong: rgba(255, 255, 255, 0.16);
+  --ml-text:          #e6edf3;
+  --ml-text-muted:    #7d8590;
+  --ml-text-faint:    #565f69;
+
+  --ml-blue:    #5b9eff;
+  --ml-green:   #22c55e;
+  --ml-red:     #ff6b6b;
+  --ml-yellow:  #facc15;
+  --ml-purple:  #a78bfa;
+  --ml-orange:  #fb923c;
+
+  --ml-blue-soft:   rgba(91, 158, 255, 0.10);
+  --ml-green-soft:  rgba(34, 197, 94, 0.10);
+  --ml-red-soft:    rgba(255, 107, 107, 0.10);
+  --ml-yellow-soft: rgba(250, 204, 21, 0.10);
+  --ml-purple-soft: rgba(167, 139, 250, 0.10);
+  --ml-orange-soft: rgba(251, 146, 60, 0.10);
+
+  --ml-radius:   10px;
+  --ml-radius-sm: 6px;
+  --ml-radius-lg: 14px;
+  --ml-gap:      24px;
+  --ml-accent:   var(--ml-blue);
+}
+
+[data-theme="light"] {
+  --ml-bg:            #f7f7f4;
+  --ml-surface:       #ffffff;
+  --ml-surface-2:     #f1f1ec;
+  --ml-border:        rgba(10, 14, 20, 0.10);
+  --ml-border-strong: rgba(10, 14, 20, 0.18);
+  --ml-text:          #0a0e14;
+  --ml-text-muted:    #5a6472;
+  --ml-text-faint:    #8a93a0;
+
+  --ml-blue:    #2563eb;
+  --ml-green:   #15803d;
+  --ml-red:     #dc2626;
+  --ml-yellow:  #b45309;
+  --ml-purple:  #7c3aed;
+  --ml-orange:  #c2410c;
+
+  --ml-blue-soft:   rgba(37, 99, 235, 0.08);
+  --ml-green-soft:  rgba(21, 128, 61, 0.08);
+  --ml-red-soft:    rgba(220, 38, 38, 0.08);
+  --ml-yellow-soft: rgba(180, 83, 9, 0.10);
+  --ml-purple-soft: rgba(124, 58, 237, 0.08);
+  --ml-orange-soft: rgba(194, 65, 12, 0.08);
+}
+
+/* ---------- Base ---------- */
+
+.ml-page {
+  background: var(--ml-bg);
+  color: var(--ml-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding: 48px 32px;
+}
+
+.ml-container { max-width: 1200px; margin: 0 auto; }
+.ml-container--narrow { max-width: 820px; margin: 0 auto; }
+
+/* ---------- Layout ---------- */
+
+.ml-stack        { display: flex; flex-direction: column; gap: var(--ml-gap); }
+.ml-stack--sm    { gap: 12px; }
+.ml-stack--lg    { gap: 40px; }
+.ml-stack--xl    { gap: 64px; }
+
+.ml-row          { display: flex; gap: var(--ml-gap); flex-wrap: wrap; align-items: flex-start; }
+
+.ml-grid         { display: grid; gap: var(--ml-gap); }
+.ml-grid--2      { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ml-grid--3      { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ml-grid--4      { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ml-grid--5      { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+@media (max-width: 900px) {
+  .ml-grid--3, .ml-grid--4, .ml-grid--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .ml-grid--2, .ml-grid--3, .ml-grid--4, .ml-grid--5 { grid-template-columns: 1fr; }
+}
+
+/* ---------- Typography ---------- */
+
+.ml-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ml-accent);
+}
+
+.ml-title {
+  font-size: clamp(40px, 5.2vw, 72px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: var(--ml-text);
+}
+.ml-title--md { font-size: clamp(32px, 4vw, 52px); }
+.ml-title--sm { font-size: clamp(24px, 2.6vw, 34px); }
+
+.ml-accent { color: var(--ml-accent); }
+
+.ml-lede {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ml-text-muted);
+  max-width: 72ch;
+  margin: 0;
+}
+
+.ml-text         { color: var(--ml-text-muted); margin: 0; }
+.ml-text-strong  { color: var(--ml-text); margin: 0; }
+.ml-footnote     { color: var(--ml-text-faint); font-size: 13px; margin: 0; }
+
+.ml-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ml-text);
+  margin: 0;
+}
+
+/* ---------- Accent color modifiers ----------
+   Apply to any element to set --ml-accent for itself and descendants. */
+
+.ml-c-blue   { --ml-accent: var(--ml-blue);   color: var(--ml-blue); }
+.ml-c-green  { --ml-accent: var(--ml-green);  color: var(--ml-green); }
+.ml-c-red    { --ml-accent: var(--ml-red);    color: var(--ml-red); }
+.ml-c-yellow { --ml-accent: var(--ml-yellow); color: var(--ml-yellow); }
+.ml-c-purple { --ml-accent: var(--ml-purple); color: var(--ml-purple); }
+.ml-c-orange { --ml-accent: var(--ml-orange); color: var(--ml-orange); }
+
+/* Scope-only variant: sets --ml-accent for children without recoloring self */
+.ml-scope-blue   { --ml-accent: var(--ml-blue); }
+.ml-scope-green  { --ml-accent: var(--ml-green); }
+.ml-scope-red    { --ml-accent: var(--ml-red); }
+.ml-scope-yellow { --ml-accent: var(--ml-yellow); }
+.ml-scope-purple { --ml-accent: var(--ml-purple); }
+.ml-scope-orange { --ml-accent: var(--ml-orange); }
+
+/* ---------- Cards ---------- */
+
+.ml-card {
+  background: var(--ml-surface);
+  border: 1px solid var(--ml-border);
+  border-radius: var(--ml-radius);
+  padding: 20px 22px;
+}
+
+.ml-card--lg    { padding: 28px 30px; border-radius: var(--ml-radius-lg); }
+.ml-card--sunken { background: var(--ml-surface-2); }
+
+/* Left accent border — pair with .ml-c-* or .ml-scope-* */
+.ml-card--accent {
+  border-left: 3px solid var(--ml-accent);
+}
+
+/* Top accent border (for stat cards) */
+.ml-card--top {
+  border-top: 2px solid var(--ml-accent);
+}
+
+.ml-card__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ml-accent);
+  margin: 0 0 10px;
+}
+
+.ml-card__divider {
+  border: none;
+  border-top: 1px solid var(--ml-border);
+  margin: 14px 0;
+}
+
+/* Small uppercase tag — used as card header like "HIT · 10% COST" */
+.ml-card__tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ml-accent);
+  margin-bottom: 10px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Card with tinted background matching accent */
+.ml-card--tinted {
+  background: color-mix(in srgb, var(--ml-accent) 6%, var(--ml-surface));
+  border-color: color-mix(in srgb, var(--ml-accent) 30%, var(--ml-border));
+}
+
+/* ---------- Stats ---------- */
+
+.ml-stat__value {
+  display: block;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ml-accent);
+  margin: 0 0 10px;
+}
+.ml-stat__value--sm { font-size: 32px; }
+.ml-stat__value--lg { font-size: 56px; }
+
+.ml-stat__label {
+  font-size: 13px;
+  color: var(--ml-text-muted);
+  margin: 0;
+}
+
+/* ---------- Pills & code ---------- */
+
+.ml-pill {
+  display: inline-block;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.88em;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: var(--ml-radius-sm);
+  background: var(--ml-surface-2);
+  border: 1px solid var(--ml-border);
+  color: var(--ml-text);
+  line-height: 1.4;
+  vertical-align: baseline;
+}
+
+.ml-pill--blue   { color: var(--ml-blue);   background: var(--ml-blue-soft);   border-color: color-mix(in srgb, var(--ml-blue) 30%, transparent); }
+.ml-pill--green  { color: var(--ml-green);  background: var(--ml-green-soft);  border-color: color-mix(in srgb, var(--ml-green) 30%, transparent); }
+.ml-pill--red    { color: var(--ml-red);    background: var(--ml-red-soft);    border-color: color-mix(in srgb, var(--ml-red) 30%, transparent); }
+.ml-pill--yellow { color: var(--ml-yellow); background: var(--ml-yellow-soft); border-color: color-mix(in srgb, var(--ml-yellow) 30%, transparent); }
+.ml-pill--purple { color: var(--ml-purple); background: var(--ml-purple-soft); border-color: color-mix(in srgb, var(--ml-purple) 30%, transparent); }
+
+.ml-code {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13.5px;
+  line-height: 1.6;
+  background: var(--ml-surface-2);
+  border: 1px solid var(--ml-border);
+  border-radius: var(--ml-radius);
+  padding: 16px 18px;
+  color: var(--ml-text);
+  overflow-x: auto;
+  margin: 0;
+  white-space: pre;
+}
+
+.ml-code .ml-tok-kw      { color: var(--ml-purple); }
+.ml-code .ml-tok-str     { color: var(--ml-green); }
+.ml-code .ml-tok-num     { color: var(--ml-orange); }
+.ml-code .ml-tok-comment { color: var(--ml-text-faint); font-style: italic; }
+.ml-code .ml-tok-fn      { color: var(--ml-blue); }
+
+/* ---------- Segmented bar ---------- */
+
+.ml-segbar {
+  display: flex;
+  width: 100%;
+  height: 44px;
+  border-radius: var(--ml-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--ml-border);
+}
+.ml-segbar__seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0a0e14;
+  padding: 0 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: var(--ml-seg-color, var(--ml-blue));
+}
+.ml-segbar__seg--muted {
+  background: var(--ml-surface-2);
+  color: var(--ml-text-muted);
+}
+
+/* ---------- Legend ---------- */
+
+.ml-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+}
+.ml-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ml-text-muted);
+}
+.ml-legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--ml-accent);
+  flex: none;
+}
+
+/* ---------- Table ---------- */
+
+.ml-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.ml-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ml-text-muted);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--ml-border);
+}
+.ml-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--ml-border);
+  color: var(--ml-text);
+  vertical-align: top;
+}
+.ml-table tr:last-child td { border-bottom: none; }
+.ml-table td.ml-td-muted { color: var(--ml-text-muted); }
+
+/* ---------- Divider ---------- */
+
+.ml-hr {
+  border: none;
+  border-top: 1px solid var(--ml-border);
+  margin: 0;
+}
+
+/* ---------- Theme toggle button (utility) ---------- */
+
+.ml-theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--ml-surface);
+  color: var(--ml-text);
+  border: 1px solid var(--ml-border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 100;
+}
+.ml-theme-toggle:hover { border-color: var(--ml-border-strong); }

@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marshall Labs — Design System</title>
+  <link rel="stylesheet" href="marshall-labs.css">
+  <style>
+    /* Page-only helpers for the docs page itself.
+       Not part of the design system. */
+    .doc-section     { padding-top: 24px; }
+    .doc-section + .doc-section { border-top: 1px solid var(--ml-border); margin-top: 56px; padding-top: 56px; }
+    .doc-example     { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
+    .doc-example > .ml-code { max-height: 420px; }
+    @media (max-width: 1000px) { .doc-example { grid-template-columns: 1fr; } }
+    .doc-swatch      { height: 72px; border-radius: var(--ml-radius); border: 1px solid var(--ml-border); display: flex; align-items: flex-end; padding: 10px 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.85); }
+    [data-theme="light"] .doc-swatch { color: rgba(255,255,255,0.95); }
+    .doc-label       { font-size: 12px; color: var(--ml-text-faint); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; margin-bottom: 10px; }
+  </style>
+</head>
+<body class="ml-page">
+
+  <button class="ml-theme-toggle" onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'">
+    Toggle theme
+  </button>
+
+  <div class="ml-container">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <header class="ml-stack ml-stack--lg" style="margin-bottom: 80px;">
+      <span class="ml-eyebrow">Marshall Labs · Design System v1</span>
+      <h1 class="ml-title">A small set of <span class="ml-accent">reusable</span> CSS classes.</h1>
+      <p class="ml-lede">
+        Drop <code class="ml-pill">marshall-labs.css</code> into a page, add <code class="ml-pill">class="ml-page"</code> to
+        <code class="ml-pill">&lt;body&gt;</code>, and compose with the classes below. Dark by default. Switch modes by
+        setting <code class="ml-pill">data-theme="light"</code> on any ancestor.
+      </p>
+
+      <div class="ml-grid ml-grid--5">
+        <div class="ml-card ml-card--top ml-scope-blue">
+          <span class="ml-stat__value">14</span>
+          <span class="ml-stat__label">component patterns</span>
+        </div>
+        <div class="ml-card ml-card--top ml-scope-green">
+          <span class="ml-stat__value">6</span>
+          <span class="ml-stat__label">accent colors</span>
+        </div>
+        <div class="ml-card ml-card--top ml-scope-purple">
+          <span class="ml-stat__value">2</span>
+          <span class="ml-stat__label">themes (dark / light)</span>
+        </div>
+        <div class="ml-card ml-card--top ml-scope-yellow">
+          <span class="ml-stat__value">0</span>
+          <span class="ml-stat__label">JavaScript required</span>
+        </div>
+        <div class="ml-card ml-card--top ml-scope-red">
+          <span class="ml-stat__value">1</span>
+          <span class="ml-stat__label">CSS file to include</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         GETTING STARTED
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-green">01 · Getting started</span>
+      <h2 class="ml-title ml-title--md">Drop it in and compose.</h2>
+      <p class="ml-lede">Two rules: every page is wrapped in <code class="ml-pill">.ml-page</code> and every layout lives inside <code class="ml-pill">.ml-container</code>. Everything else is opt-in.</p>
+
+<pre class="ml-code">&lt;!doctype html&gt;
+&lt;html data-theme="dark"&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="marshall-labs.css"&gt;
+  &lt;/head&gt;
+  &lt;body class="ml-page"&gt;
+    &lt;div class="ml-container"&gt;
+      &lt;h1 class="ml-title"&gt;Hello &lt;span class="ml-accent"&gt;world&lt;/span&gt;.&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+    </section>
+
+    <!-- ============================================================
+         TOKENS: COLORS
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-purple">02 · Design tokens</span>
+      <h2 class="ml-title ml-title--md">Colors map to CSS variables.</h2>
+      <p class="ml-lede">Override any variable in your own stylesheet to rebrand. Variables switch automatically between themes.</p>
+
+      <div>
+        <div class="doc-label">Accents</div>
+        <div class="ml-grid ml-grid--5">
+          <div class="doc-swatch" style="background: var(--ml-blue)">--ml-blue</div>
+          <div class="doc-swatch" style="background: var(--ml-green)">--ml-green</div>
+          <div class="doc-swatch" style="background: var(--ml-red)">--ml-red</div>
+          <div class="doc-swatch" style="background: var(--ml-yellow)">--ml-yellow</div>
+          <div class="doc-swatch" style="background: var(--ml-purple)">--ml-purple</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="doc-label">Surfaces &amp; text</div>
+        <div class="ml-grid ml-grid--5">
+          <div class="doc-swatch" style="background: var(--ml-bg)">--ml-bg</div>
+          <div class="doc-swatch" style="background: var(--ml-surface)">--ml-surface</div>
+          <div class="doc-swatch" style="background: var(--ml-surface-2)">--ml-surface-2</div>
+          <div class="doc-swatch" style="background: var(--ml-text); color: var(--ml-bg)">--ml-text</div>
+          <div class="doc-swatch" style="background: var(--ml-text-muted)">--ml-text-muted</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TYPOGRAPHY
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow">03 · Typography</span>
+      <h2 class="ml-title ml-title--md">Four type styles cover most pages.</h2>
+
+      <div class="doc-example">
+        <div class="ml-card ml-card--lg ml-stack">
+          <span class="ml-eyebrow">Eyebrow label</span>
+          <h3 class="ml-title ml-title--sm">Display title with an <span class="ml-accent">accent</span> word.</h3>
+          <p class="ml-lede">Lede paragraph — muted, slightly larger, caps out around 72 characters so it stays readable on wide screens.</p>
+          <p class="ml-text">Body text uses <code class="ml-pill">.ml-text</code> for the muted default. For emphasis, switch to <code class="ml-pill">.ml-text-strong</code>.</p>
+          <p class="ml-footnote">Footnote · 13px · <code class="ml-pill">.ml-footnote</code>.</p>
+        </div>
+<pre class="ml-code">&lt;span class="ml-eyebrow"&gt;Eyebrow label&lt;/span&gt;
+&lt;h3 class="ml-title ml-title--sm"&gt;
+  Display title with an
+  &lt;span class="ml-accent"&gt;accent&lt;/span&gt; word.
+&lt;/h3&gt;
+&lt;p class="ml-lede"&gt;Lede paragraph…&lt;/p&gt;
+&lt;p class="ml-text"&gt;Body text…&lt;/p&gt;
+&lt;p class="ml-footnote"&gt;Footnote…&lt;/p&gt;</pre>
+      </div>
+
+      <p class="ml-text">
+        <strong class="ml-text-strong">Title sizes:</strong>
+        <code class="ml-pill">.ml-title</code> (hero),
+        <code class="ml-pill">.ml-title--md</code> (section),
+        <code class="ml-pill">.ml-title--sm</code> (sub-section).
+        All three use fluid sizing via <code class="ml-pill">clamp()</code>.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         ACCENT COLORS
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-yellow">04 · Accent colors</span>
+      <h2 class="ml-title ml-title--md">One pattern for color-coding.</h2>
+      <p class="ml-lede">
+        Add <code class="ml-pill">.ml-c-{color}</code> to color an element <em>and</em> set the accent variable for its descendants (so child accent borders, titles, bars all follow). Use <code class="ml-pill">.ml-scope-{color}</code> when you only want to set the variable without recoloring the element itself — useful on cards.
+      </p>
+
+      <div class="doc-example">
+        <div class="ml-stack">
+          <span class="ml-eyebrow ml-c-blue">Eyebrow · blue</span>
+          <span class="ml-eyebrow ml-c-green">Eyebrow · green</span>
+          <span class="ml-eyebrow ml-c-red">Eyebrow · red</span>
+          <span class="ml-eyebrow ml-c-yellow">Eyebrow · yellow</span>
+          <span class="ml-eyebrow ml-c-purple">Eyebrow · purple</span>
+          <span class="ml-eyebrow ml-c-orange">Eyebrow · orange</span>
+        </div>
+<pre class="ml-code">&lt;span class="ml-eyebrow ml-c-blue"&gt;Eyebrow · blue&lt;/span&gt;
+&lt;span class="ml-eyebrow ml-c-green"&gt;Eyebrow · green&lt;/span&gt;
+&lt;span class="ml-eyebrow ml-c-red"&gt;Eyebrow · red&lt;/span&gt;
+&lt;span class="ml-eyebrow ml-c-yellow"&gt;Eyebrow · yellow&lt;/span&gt;
+&lt;span class="ml-eyebrow ml-c-purple"&gt;Eyebrow · purple&lt;/span&gt;
+&lt;span class="ml-eyebrow ml-c-orange"&gt;Eyebrow · orange&lt;/span&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CARDS
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-blue">05 · Cards</span>
+      <h2 class="ml-title ml-title--md">Four card variants, one base class.</h2>
+      <p class="ml-lede">
+        Start with <code class="ml-pill">.ml-card</code>. Add <code class="ml-pill">--accent</code> for a left-border, <code class="ml-pill">--top</code> for a top-border (stats), <code class="ml-pill">--tinted</code> to tint the background with the current accent, <code class="ml-pill">--sunken</code> for a slightly inset look.
+      </p>
+
+      <div class="ml-grid ml-grid--2">
+        <div class="ml-card">
+          <h4 class="ml-heading">Base card</h4>
+          <p class="ml-text" style="margin-top: 8px">The default. Surface background, subtle border, rounded.</p>
+        </div>
+        <div class="ml-card ml-card--sunken">
+          <h4 class="ml-heading">Sunken card</h4>
+          <p class="ml-text" style="margin-top: 8px">Uses <code class="ml-pill">--ml-surface-2</code> for a recessed feel.</p>
+        </div>
+        <div class="ml-card ml-card--accent ml-scope-red">
+          <h4 class="ml-card__title">Accent-left card</h4>
+          <p class="ml-text">Pair <code class="ml-pill">.ml-card--accent</code> with <code class="ml-pill">.ml-scope-red</code> (etc.) to color the border and title.</p>
+        </div>
+        <div class="ml-card ml-card--tinted ml-scope-green">
+          <h4 class="ml-card__title">Tinted card</h4>
+          <p class="ml-text">Background tints with the accent. Good for callouts.</p>
+        </div>
+      </div>
+
+<pre class="ml-code">&lt;div class="ml-card"&gt;…base…&lt;/div&gt;
+&lt;div class="ml-card ml-card--sunken"&gt;…&lt;/div&gt;
+
+&lt;div class="ml-card ml-card--accent ml-scope-red"&gt;
+  &lt;h4 class="ml-card__title"&gt;Accent-left card&lt;/h4&gt;
+  &lt;p class="ml-text"&gt;…&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="ml-card ml-card--tinted ml-scope-green"&gt;…&lt;/div&gt;</pre>
+
+      <h3 class="ml-title ml-title--sm" style="margin-top: 24px">Tagged card header</h3>
+      <p class="ml-text">Use <code class="ml-pill">.ml-card__tag</code> for a small uppercase status-label-style header (HIT · 10% COST style).</p>
+
+      <div class="ml-grid ml-grid--3">
+        <div class="ml-card ml-card--accent ml-scope-green">
+          <span class="ml-card__tag">HIT · 10% COST</span>
+          <p class="ml-text-strong">System prompt<br>+ tool schemas<br>+ CLAUDE.md</p>
+        </div>
+        <div class="ml-card ml-card--accent ml-scope-green">
+          <span class="ml-card__tag">HIT · 10% COST</span>
+          <p class="ml-text-strong">Early conversation turns (stable)</p>
+        </div>
+        <div class="ml-card ml-card--accent ml-scope-red">
+          <span class="ml-card__tag">MISS · FULL COST</span>
+          <p class="ml-text-strong">New user turn<br>+ tool result<br>+ output</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         STATS
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-green">06 · Stat cards</span>
+      <h2 class="ml-title ml-title--md">Big number, small caption.</h2>
+      <p class="ml-lede">Combine <code class="ml-pill">.ml-card--top</code> with <code class="ml-pill">.ml-stat__value</code> and <code class="ml-pill">.ml-stat__label</code>. Modifiers <code class="ml-pill">--sm</code> / <code class="ml-pill">--lg</code> scale the number.</p>
+
+      <div class="ml-grid ml-grid--4">
+        <div class="ml-card ml-card--top ml-scope-blue">
+          <span class="ml-stat__value">1M</span>
+          <span class="ml-stat__label">Opus 4.7 · tokens</span>
+        </div>
+        <div class="ml-card ml-card--top ml-scope-blue">
+          <span class="ml-stat__value">200K</span>
+          <span class="ml-stat__label">Sonnet 4.6 · default</span>
+        </div>
+        <div class="ml-card ml-card--top ml-scope-purple">
+          <span class="ml-stat__value">5 min</span>
+          <span class="ml-stat__label">prompt cache TTL</span>
+        </div>
+        <div class="ml-card ml-card--top ml-scope-yellow">
+          <span class="ml-stat__value">4</span>
+          <span class="ml-stat__label">cache breakpoints</span>
+        </div>
+      </div>
+
+<pre class="ml-code">&lt;div class="ml-card ml-card--top ml-scope-blue"&gt;
+  &lt;span class="ml-stat__value"&gt;1M&lt;/span&gt;
+  &lt;span class="ml-stat__label"&gt;Opus 4.7 · tokens&lt;/span&gt;
+&lt;/div&gt;</pre>
+    </section>
+
+    <!-- ============================================================
+         PILLS & CODE
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-red">07 · Pills &amp; code</span>
+      <h2 class="ml-title ml-title--md">Inline tokens and block snippets.</h2>
+      <p class="ml-lede">
+        Use <code class="ml-pill">.ml-pill</code> for inline code-like tokens (file paths, flags, function names). Color variants add semantic meaning.
+        For multi-line code, use <code class="ml-pill">&lt;pre class="ml-code"&gt;</code>.
+      </p>
+
+      <div class="ml-card">
+        <p class="ml-text-strong">
+          The search flow:
+          <code class="ml-pill ml-pill--blue">Glob</code>
+          <code class="ml-pill ml-pill--green">"src/**/*.ts"</code>
+          →
+          <code class="ml-pill ml-pill--blue">Grep</code>
+          <code class="ml-pill ml-pill--green">"handleLogin"</code>
+          →
+          <code class="ml-pill ml-pill--purple">Read</code>
+          <code class="ml-pill">auth.ts</code>
+          →
+          <code class="ml-pill ml-pill--yellow">Edit</code>.
+        </p>
+      </div>
+
+      <div class="doc-example">
+<pre class="ml-code"><span class="ml-tok-kw">const</span> <span class="ml-tok-fn">greet</span> = (name) =&gt; {
+  <span class="ml-tok-comment">// say hello to the caller</span>
+  <span class="ml-tok-kw">return</span> <span class="ml-tok-str">`Hello, ${name}!`</span>;
+};
+
+<span class="ml-tok-fn">greet</span>(<span class="ml-tok-str">"world"</span>);
+<span class="ml-tok-comment">// =&gt; "Hello, world!"</span></pre>
+<pre class="ml-code">&lt;pre class="ml-code"&gt;
+  &lt;span class="ml-tok-kw"&gt;const&lt;/span&gt; …
+  &lt;span class="ml-tok-fn"&gt;greet&lt;/span&gt; …
+  &lt;span class="ml-tok-str"&gt;"world"&lt;/span&gt;
+  &lt;span class="ml-tok-comment"&gt;// …&lt;/span&gt;
+&lt;/pre&gt;</pre>
+      </div>
+
+      <p class="ml-footnote">
+        Available syntax spans: <code class="ml-pill">.ml-tok-kw</code>, <code class="ml-pill">.ml-tok-str</code>,
+        <code class="ml-pill">.ml-tok-num</code>, <code class="ml-pill">.ml-tok-comment</code>, <code class="ml-pill">.ml-tok-fn</code>.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         SEGMENTED BAR
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-orange">08 · Segmented bar</span>
+      <h2 class="ml-title ml-title--md">Proportional categories in a horizontal bar.</h2>
+      <p class="ml-lede">Set <code class="ml-pill">flex</code> on each segment with inline style to control proportion, and <code class="ml-pill">--ml-seg-color</code> for its color. Pair with a legend.</p>
+
+      <div class="ml-card ml-card--lg ml-stack">
+        <span class="ml-card__tag">A TYPICAL AGENTIC TURN · 200K WINDOW</span>
+        <div class="ml-segbar">
+          <div class="ml-segbar__seg" style="flex: 1; --ml-seg-color: var(--ml-purple)">System</div>
+          <div class="ml-segbar__seg" style="flex: 2; --ml-seg-color: var(--ml-blue)">Tool schemas</div>
+          <div class="ml-segbar__seg" style="flex: 3; --ml-seg-color: var(--ml-green)">Message history</div>
+          <div class="ml-segbar__seg" style="flex: 3; --ml-seg-color: var(--ml-yellow)">File / tool results</div>
+          <div class="ml-segbar__seg ml-segbar__seg--muted" style="flex: 2">Headroom</div>
+        </div>
+        <div class="ml-legend">
+          <span class="ml-legend__item"><span class="ml-legend__dot ml-c-purple"></span>System prompt + CLAUDE.md</span>
+          <span class="ml-legend__item"><span class="ml-legend__dot ml-c-blue"></span>Tool schemas</span>
+          <span class="ml-legend__item"><span class="ml-legend__dot ml-c-green"></span>Prior turns · thinking</span>
+          <span class="ml-legend__item"><span class="ml-legend__dot ml-c-yellow"></span>File reads · search output</span>
+          <span class="ml-legend__item"><span class="ml-legend__dot" style="background: var(--ml-text-faint)"></span>Free for output</span>
+        </div>
+      </div>
+
+<pre class="ml-code">&lt;div class="ml-segbar"&gt;
+  &lt;div class="ml-segbar__seg" style="flex: 1; --ml-seg-color: var(--ml-purple)"&gt;System&lt;/div&gt;
+  &lt;div class="ml-segbar__seg" style="flex: 2; --ml-seg-color: var(--ml-blue)"&gt;Tool schemas&lt;/div&gt;
+  &lt;div class="ml-segbar__seg ml-segbar__seg--muted" style="flex: 2"&gt;Headroom&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="ml-legend"&gt;
+  &lt;span class="ml-legend__item"&gt;
+    &lt;span class="ml-legend__dot ml-c-purple"&gt;&lt;/span&gt;System
+  &lt;/span&gt;
+&lt;/div&gt;</pre>
+    </section>
+
+    <!-- ============================================================
+         TABLE
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-purple">09 · Table</span>
+      <h2 class="ml-title ml-title--md">Clean rows, uppercase header, no vertical rules.</h2>
+
+      <table class="ml-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input</th>
+            <th>Cache read</th>
+            <th>Output</th>
+            <th>Output ÷ Input</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Opus 4.7</strong></td>
+            <td>$15 / MTok</td>
+            <td class="ml-c-green">$1.50 / MTok</td>
+            <td class="ml-c-red">$75 / MTok</td>
+            <td>5×</td>
+          </tr>
+          <tr>
+            <td><strong>Sonnet 4.6</strong></td>
+            <td>$3 / MTok</td>
+            <td class="ml-c-green">$0.30 / MTok</td>
+            <td class="ml-c-red">$15 / MTok</td>
+            <td>5×</td>
+          </tr>
+          <tr>
+            <td><strong>Haiku 4.5</strong></td>
+            <td>$1 / MTok</td>
+            <td class="ml-c-green">$0.10 / MTok</td>
+            <td class="ml-c-red">$5 / MTok</td>
+            <td>5×</td>
+          </tr>
+        </tbody>
+      </table>
+
+<pre class="ml-code">&lt;table class="ml-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Model&lt;/th&gt;&lt;th&gt;Input&lt;/th&gt;…&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Opus 4.7&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;$15 / MTok&lt;/td&gt;
+      &lt;td class="ml-c-green"&gt;$1.50 / MTok&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+    </section>
+
+    <!-- ============================================================
+         COMPOSITION EXAMPLE
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-red">10 · Putting it together</span>
+      <h2 class="ml-title ml-title--md">A full section composed from the primitives.</h2>
+      <p class="ml-lede">Three accent-left cards with tagged headers — the classic "failure modes" layout.</p>
+
+      <div class="ml-card ml-card--lg ml-stack">
+        <span class="ml-eyebrow ml-c-red">What goes wrong</span>
+        <h3 class="ml-title ml-title--sm">Three failure modes as the window fills.</h3>
+
+        <div class="ml-grid ml-grid--3">
+          <div class="ml-card ml-card--accent ml-scope-red">
+            <h4 class="ml-card__title">Context rot</h4>
+            <p class="ml-text">Instructions buried in the middle of a long stream lose weight. The model recalls the beginning and end; the middle gets vague.</p>
+            <hr class="ml-card__divider">
+            <span class="ml-card__tag ml-c-yellow">Seen in the wild</span>
+            <p class="ml-text">Mid-session you tell the agent "always write a test." Twenty turns later, new code lands without tests.</p>
+          </div>
+          <div class="ml-card ml-card--accent ml-scope-red">
+            <h4 class="ml-card__title">Context anxiety</h4>
+            <p class="ml-text">As the window approaches full, the model rushes to wrap up. Later steps get shallower; it starts summarizing instead of doing.</p>
+            <hr class="ml-card__divider">
+            <span class="ml-card__tag ml-c-yellow">Seen in the wild</span>
+            <p class="ml-text">A 30-file refactor. First 10: careful edits. Last 5: "applied the same pattern to the remaining files."</p>
+          </div>
+          <div class="ml-card ml-card--accent ml-scope-red">
+            <h4 class="ml-card__title">Cache cascade</h4>
+            <p class="ml-text">Editing early content invalidates every downstream cache block. One small prefix change can 10× your token cost.</p>
+            <hr class="ml-card__divider">
+            <span class="ml-card__tag ml-c-yellow">Seen in the wild</span>
+            <p class="ml-text">Someone adds one new MCP tool. The tool list reorders → cached system prefix invalidated → next session bill: ~10×.</p>
+          </div>
+        </div>
+
+        <p class="ml-text-strong" style="margin-top: 8px">
+          None of these are bugs. They're <strong>predictable consequences</strong> of a flat, position-sensitive, priced-per-token stream.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CLASS REFERENCE
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow">11 · Class reference</span>
+      <h2 class="ml-title ml-title--md">Everything at a glance.</h2>
+
+      <table class="ml-table">
+        <thead>
+          <tr><th>Class</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code class="ml-pill">.ml-page</code></td><td>Page wrapper — applies background, font, padding. Put on <code class="ml-pill">&lt;body&gt;</code>.</td></tr>
+          <tr><td><code class="ml-pill">.ml-container</code> / <code class="ml-pill">--narrow</code></td><td>Centered max-width wrapper (1200px / 820px).</td></tr>
+          <tr><td><code class="ml-pill">.ml-stack</code> / <code class="ml-pill">--sm --lg --xl</code></td><td>Vertical flex layout with consistent gap.</td></tr>
+          <tr><td><code class="ml-pill">.ml-grid</code> + <code class="ml-pill">--2/3/4/5</code></td><td>Responsive equal-column grid. Collapses to 2 then 1 column on smaller screens.</td></tr>
+          <tr><td><code class="ml-pill">.ml-row</code></td><td>Horizontal flex with wrap.</td></tr>
+          <tr><td><code class="ml-pill">.ml-eyebrow</code></td><td>Small uppercase label — section kicker.</td></tr>
+          <tr><td><code class="ml-pill">.ml-title</code> / <code class="ml-pill">--md --sm</code></td><td>Display headings. Use <code class="ml-pill">.ml-accent</code> inside to color a word.</td></tr>
+          <tr><td><code class="ml-pill">.ml-lede</code></td><td>Intro paragraph under a title — muted, 18px.</td></tr>
+          <tr><td><code class="ml-pill">.ml-text</code> / <code class="ml-pill">.ml-text-strong</code> / <code class="ml-pill">.ml-footnote</code></td><td>Body paragraph styles.</td></tr>
+          <tr><td><code class="ml-pill">.ml-heading</code></td><td>Small bold label — for card titles that shouldn't be colored.</td></tr>
+          <tr><td><code class="ml-pill">.ml-c-{color}</code></td><td>Recolors element and sets <code class="ml-pill">--ml-accent</code> for descendants.</td></tr>
+          <tr><td><code class="ml-pill">.ml-scope-{color}</code></td><td>Sets <code class="ml-pill">--ml-accent</code> for descendants without recoloring the element.</td></tr>
+          <tr><td><code class="ml-pill">.ml-card</code> + <code class="ml-pill">--lg --sunken --accent --top --tinted</code></td><td>Card surface and variants. Most variants want a scope color.</td></tr>
+          <tr><td><code class="ml-pill">.ml-card__title</code> / <code class="ml-pill">__tag</code> / <code class="ml-pill">__divider</code></td><td>Card internals — colored title, uppercase tag, horizontal rule.</td></tr>
+          <tr><td><code class="ml-pill">.ml-stat__value</code> / <code class="ml-pill">__label</code></td><td>Big accent number + caption. Use <code class="ml-pill">--sm --lg</code> on value to scale.</td></tr>
+          <tr><td><code class="ml-pill">.ml-pill</code> + <code class="ml-pill">--blue/green/red/yellow/purple</code></td><td>Inline monospace tokens.</td></tr>
+          <tr><td><code class="ml-pill">.ml-code</code></td><td>Code block. Optional spans: <code class="ml-pill">.ml-tok-kw/str/num/comment/fn</code>.</td></tr>
+          <tr><td><code class="ml-pill">.ml-segbar</code> + <code class="ml-pill">__seg</code></td><td>Horizontal segmented bar. Control proportion with <code class="ml-pill">flex</code>, color with <code class="ml-pill">--ml-seg-color</code>.</td></tr>
+          <tr><td><code class="ml-pill">.ml-legend</code> + <code class="ml-pill">__item __dot</code></td><td>Color-dot legend for charts.</td></tr>
+          <tr><td><code class="ml-pill">.ml-table</code></td><td>Base table with uppercase muted headers and row-only rules.</td></tr>
+          <tr><td><code class="ml-pill">.ml-hr</code></td><td>Horizontal divider.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================================================
+         THEMING
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-green">12 · Theming</span>
+      <h2 class="ml-title ml-title--md">Two themes, one attribute.</h2>
+      <p class="ml-lede">
+        Set <code class="ml-pill">data-theme="dark"</code> (default) or <code class="ml-pill">data-theme="light"</code> on <code class="ml-pill">&lt;html&gt;</code> — or on any subtree you want to flip. The button in the top-right of this page does it with one line of JavaScript.
+      </p>
+
+<pre class="ml-code"><span class="ml-tok-comment">// toggle site-wide</span>
+document.documentElement.dataset.theme =
+  document.documentElement.dataset.theme === <span class="ml-tok-str">'dark'</span>
+    ? <span class="ml-tok-str">'light'</span>
+    : <span class="ml-tok-str">'dark'</span>;
+
+<span class="ml-tok-comment">// or respect OS preference on load</span>
+<span class="ml-tok-kw">if</span> (window.matchMedia(<span class="ml-tok-str">'(prefers-color-scheme: light)'</span>).matches) {
+  document.documentElement.dataset.theme = <span class="ml-tok-str">'light'</span>;
+}</pre>
+
+      <p class="ml-text">
+        To rebrand, override any of the <code class="ml-pill">--ml-*</code> custom properties in your own stylesheet after importing <code class="ml-pill">marshall-labs.css</code>. Scope overrides to a theme by nesting under <code class="ml-pill">[data-theme="dark"]</code> or <code class="ml-pill">[data-theme="light"]</code>.
+      </p>
+    </section>
+
+    <footer class="doc-section" style="text-align: center; padding-top: 80px;">
+      <p class="ml-footnote">Marshall Labs · Design System v1 · <span class="ml-c-blue">marshall-labs.css</span></p>
+    </footer>
+
+  </div>
+</body>
+</html>
