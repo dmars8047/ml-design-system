@@ -215,6 +215,40 @@
 
 &lt;div class="ml-card ml-card--tinted ml-scope-green"&gt;…&lt;/div&gt;</pre>
 
+      <h3 class="ml-title ml-title--sm" style="margin-top: 24px">Vertical card lists</h3>
+      <p class="ml-text">Cards have no inherent spacing. Wrap a vertical list in <code class="ml-pill">.ml-stack</code> (24 px gap) or <code class="ml-pill">.ml-stack--sm</code> (12 px gap) to separate them.</p>
+
+      <div class="doc-example" style="grid-template-columns: 1fr 1fr; align-items: start;">
+        <div>
+          <p class="doc-label">.ml-stack (24 px)</p>
+          <div class="ml-stack">
+            <div class="ml-card"><h4 class="ml-heading">Alpha</h4><p class="ml-text">First item in the list.</p></div>
+            <div class="ml-card"><h4 class="ml-heading">Beta</h4><p class="ml-text">Second item in the list.</p></div>
+            <div class="ml-card"><h4 class="ml-heading">Gamma</h4><p class="ml-text">Third item in the list.</p></div>
+          </div>
+        </div>
+        <div>
+          <p class="doc-label">.ml-stack--sm (12 px)</p>
+          <div class="ml-stack ml-stack--sm">
+            <div class="ml-card"><h4 class="ml-heading">Alpha</h4><p class="ml-text">First item in the list.</p></div>
+            <div class="ml-card"><h4 class="ml-heading">Beta</h4><p class="ml-text">Second item in the list.</p></div>
+            <div class="ml-card"><h4 class="ml-heading">Gamma</h4><p class="ml-text">Third item in the list.</p></div>
+          </div>
+        </div>
+      </div>
+
+<pre class="ml-code">&lt;!-- 24 px gap --&gt;
+&lt;div class="ml-stack"&gt;
+  &lt;div class="ml-card"&gt;…&lt;/div&gt;
+  &lt;div class="ml-card"&gt;…&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 12 px gap --&gt;
+&lt;div class="ml-stack ml-stack--sm"&gt;
+  &lt;div class="ml-card"&gt;…&lt;/div&gt;
+  &lt;div class="ml-card"&gt;…&lt;/div&gt;
+&lt;/div&gt;</pre>
+
       <h3 class="ml-title ml-title--sm" style="margin-top: 24px">Tagged card header</h3>
       <p class="ml-text">Use <code class="ml-pill">.ml-card__tag</code> for a small uppercase status-label-style header (HIT · 10% COST style).</p>
 
