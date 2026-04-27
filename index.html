@@ -249,6 +249,26 @@
   &lt;div class="ml-card"&gt;…&lt;/div&gt;
 &lt;/div&gt;</pre>
 
+      <h3 class="ml-title ml-title--sm" style="margin-top: 24px">Multi-column card grids</h3>
+      <p class="ml-text"><code class="ml-pill">.ml-grid--*</code> controls columns but carries no row-gap opinion. Pair it with <code class="ml-pill">.ml-stack</code> or <code class="ml-pill">.ml-stack--sm</code> on the same element to apply consistent row rhythm between card rows.</p>
+
+      <div class="ml-grid--3 ml-stack ml-stack--sm">
+        <div class="ml-card"><h4 class="ml-heading">Alpha</h4><p class="ml-text">First card.</p></div>
+        <div class="ml-card"><h4 class="ml-heading">Beta</h4><p class="ml-text">Second card.</p></div>
+        <div class="ml-card"><h4 class="ml-heading">Gamma</h4><p class="ml-text">Third card.</p></div>
+        <div class="ml-card"><h4 class="ml-heading">Delta</h4><p class="ml-text">Fourth card.</p></div>
+        <div class="ml-card"><h4 class="ml-heading">Epsilon</h4><p class="ml-text">Fifth card.</p></div>
+        <div class="ml-card"><h4 class="ml-heading">Zeta</h4><p class="ml-text">Sixth card.</p></div>
+      </div>
+
+<pre class="ml-code"><span class="ml-tok-comment">&lt;!-- ml-grid--* sets columns; ml-stack--sm adds row rhythm --&gt;</span>
+&lt;div class="ml-grid--3 ml-stack ml-stack--sm"&gt;
+  &lt;div class="ml-card"&gt;…&lt;/div&gt;
+  &lt;div class="ml-card"&gt;…&lt;/div&gt;
+  &lt;div class="ml-card"&gt;…&lt;/div&gt;
+  &lt;div class="ml-card"&gt;…&lt;/div&gt;
+&lt;/div&gt;</pre>
+
       <h3 class="ml-title ml-title--sm" style="margin-top: 24px">Tagged card header</h3>
       <p class="ml-text">Use <code class="ml-pill">.ml-card__tag</code> for a small uppercase status-label-style header (HIT · 10% COST style).</p>
 
@@ -500,7 +520,7 @@
           <tr><td><code class="ml-pill">.ml-page</code></td><td>Page wrapper — applies background, font, padding. Put on <code class="ml-pill">&lt;body&gt;</code>.</td></tr>
           <tr><td><code class="ml-pill">.ml-container</code> / <code class="ml-pill">--narrow</code></td><td>Centered max-width wrapper (1200px / 820px).</td></tr>
           <tr><td><code class="ml-pill">.ml-stack</code> / <code class="ml-pill">--sm --lg --xl</code></td><td>Vertical flex layout with consistent gap.</td></tr>
-          <tr><td><code class="ml-pill">.ml-grid</code> + <code class="ml-pill">--2/3/4/5</code></td><td>Responsive equal-column grid. Collapses to 2 then 1 column on smaller screens.</td></tr>
+          <tr><td><code class="ml-pill">.ml-grid</code> + <code class="ml-pill">--2/3/4/5</code></td><td>Responsive equal-column grid. Collapses to 2 then 1 column on smaller screens. For card grids, pair with <code class="ml-pill">.ml-stack--sm</code> on the same element to control row gap.</td></tr>
           <tr><td><code class="ml-pill">.ml-row</code></td><td>Horizontal flex with wrap.</td></tr>
           <tr><td><code class="ml-pill">.ml-eyebrow</code></td><td>Small uppercase label — section kicker.</td></tr>
           <tr><td><code class="ml-pill">.ml-title</code> / <code class="ml-pill">--md --sm</code></td><td>Display headings. Use <code class="ml-pill">.ml-accent</code> inside to color a word.</td></tr>
