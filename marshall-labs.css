@@ -124,6 +124,20 @@
 
 .ml-accent { color: var(--ml-accent); }
 
+.ml-gradient {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.ml-gradient--blue-purple   { background-image: linear-gradient(var(--ml-gradient-dir, to right), var(--ml-blue),   var(--ml-purple)); }
+.ml-gradient--blue-green    { background-image: linear-gradient(var(--ml-gradient-dir, to right), var(--ml-blue),   var(--ml-green)); }
+.ml-gradient--purple-red    { background-image: linear-gradient(var(--ml-gradient-dir, to right), var(--ml-purple), var(--ml-red)); }
+.ml-gradient--orange-red    { background-image: linear-gradient(var(--ml-gradient-dir, to right), var(--ml-orange), var(--ml-red)); }
+.ml-gradient--yellow-orange { background-image: linear-gradient(var(--ml-gradient-dir, to right), var(--ml-yellow), var(--ml-orange)); }
+.ml-gradient--green-blue    { background-image: linear-gradient(var(--ml-gradient-dir, to right), var(--ml-green),  var(--ml-blue)); }
+.ml-gradient--diagonal      { --ml-gradient-dir: 135deg; }
+
 .ml-lede {
   font-size: 18px;
   line-height: 1.55;
