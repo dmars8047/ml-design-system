@@ -2,6 +2,14 @@
 
 A lightweight, dark-first CSS design language for Marshall Labs products. One file, no build step, no JavaScript required.
 
+## Installation
+
+```sh
+make install
+```
+
+Installs the `/visualize` Claude Code skill to `~/.claude/skills/visualize/`. Re-run after updating `marshall-labs.css` or `index.html` to keep the skill bundle in sync.
+
 ## Usage
 
 1. Copy `marshall-labs.css` into your project and link it.
@@ -146,6 +154,54 @@ Apply to any element to set `--ml-accent` for itself and all descendants.
 | `.ml-code` | Preformatted code block |
 | `.ml-tok-kw / str / num / comment / fn` | Syntax token colors (inside `.ml-code`) |
 
+### Badges
+
+| Class | Description |
+|---|---|
+| `.ml-badge` | Inline status badge, bordered pill style |
+| `.ml-badge--blue/green/red/yellow/purple/orange` | Colored variants |
+
+### Alerts
+
+| Class | Description |
+|---|---|
+| `.ml-alert` | Full-width alert banner, left accent border |
+| `.ml-alert__title` | Bold title line inside an alert |
+| Pair with `.ml-scope-{color}` | Sets accent and border color |
+
+### Buttons
+
+| Class | Description |
+|---|---|
+| `.ml-btn` | Base button |
+| `.ml-btn--primary` | Filled accent button |
+| `.ml-btn--ghost` | Transparent bordered button |
+| `.ml-btn--sm / --lg` | Size variants |
+
+### Form Inputs
+
+| Class | Description |
+|---|---|
+| `.ml-field` | Wrapper for label + input + helper |
+| `.ml-label` | Field label |
+| `.ml-input` | Text input / textarea |
+| `.ml-helper` | Supporting text below an input |
+| `.ml-helper--error` | Error state helper text |
+| `[aria-invalid="true"]` on `.ml-input` | Red border error state |
+
+### Gradient Text
+
+| Class | Description |
+|---|---|
+| `.ml-gradient` | Base class for gradient text (apply with a variant) |
+| `.ml-gradient--blue-purple` | Blue → purple |
+| `.ml-gradient--blue-green` | Blue → green |
+| `.ml-gradient--purple-red` | Purple → red |
+| `.ml-gradient--orange-red` | Orange → red |
+| `.ml-gradient--yellow-orange` | Yellow → orange |
+| `.ml-gradient--green-blue` | Green → blue |
+| `.ml-gradient--diagonal` | Changes gradient direction to 135° |
+
 ### Data Visualization
 
 | Class | Description |
@@ -169,11 +225,22 @@ Apply to any element to set `--ml-accent` for itself and all descendants.
 | Class | Description |
 |---|---|
 | `.ml-hr` | Subtle horizontal rule |
-| `.ml-theme-toggle` | Fixed-position theme toggle button |
+| `.ml-theme-toggle` | Fixed-position theme toggle button (SVG icon, no label text) |
 
 ## Live Reference
 
 Open `index.html` in a browser for a full rendered component reference with code examples.
+
+## Claude Code Skill
+
+The `/visualize` skill generates self-contained HTML documents styled with this design system. Install it with `make install`, then invoke it in Claude Code:
+
+```
+/visualize create an article about how git works
+/visualize a one-pager summarizing our Q3 metrics
+```
+
+The generated file is a single `.html` with the CSS inlined — no dependencies, works offline.
 
 ## Principles
 
