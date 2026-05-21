@@ -40,7 +40,7 @@
 
       <div class="ml-grid ml-grid--5">
         <div class="ml-card ml-card--top ml-scope-blue">
-          <span class="ml-stat__value">14</span>
+          <span class="ml-stat__value">18</span>
           <span class="ml-stat__label">component patterns</span>
         </div>
         <div class="ml-card ml-card--top ml-scope-green">
@@ -371,10 +371,283 @@
     </section>
 
     <!-- ============================================================
+         BADGES
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-purple">08 · Badges</span>
+      <h2 class="ml-title ml-title--md">Status labels, not code tokens.</h2>
+      <p class="ml-lede">
+        Use <code class="ml-pill">.ml-badge</code> for status markers and version tags — anywhere you need a small readable label rather than a monospace code token. Six color variants plus a neutral default.
+      </p>
+
+      <div>
+        <p class="doc-label">Color variants</p>
+        <div class="ml-row" style="align-items: center;">
+          <span class="ml-badge">Default</span>
+          <span class="ml-badge ml-badge--blue">New</span>
+          <span class="ml-badge ml-badge--green">Active</span>
+          <span class="ml-badge ml-badge--red">Deprecated</span>
+          <span class="ml-badge ml-badge--yellow">Beta</span>
+          <span class="ml-badge ml-badge--purple">Preview</span>
+          <span class="ml-badge ml-badge--orange">Alpha</span>
+        </div>
+      </div>
+
+      <div class="doc-example">
+        <div class="ml-card ml-stack ml-stack--sm">
+          <div class="ml-row" style="align-items: center; gap: 10px;">
+            <h4 class="ml-heading">Extended thinking</h4>
+            <span class="ml-badge ml-badge--blue">New</span>
+          </div>
+          <p class="ml-text">Enables the model to reason through complex problems before responding.</p>
+          <div class="ml-row" style="align-items: center; margin-top: 4px;">
+            <span class="ml-badge ml-badge--green">Opus 4.7</span>
+            <span class="ml-badge ml-badge--green">Sonnet 4.6</span>
+            <span class="ml-badge">Haiku 4.5</span>
+          </div>
+        </div>
+<pre class="ml-code"><span class="ml-tok-comment">&lt;!-- paired with a heading --&gt;</span>
+&lt;div class="ml-row" style="align-items: center; gap: 10px;"&gt;
+  &lt;h4 class="ml-heading"&gt;Extended thinking&lt;/h4&gt;
+  &lt;span class="ml-badge ml-badge--blue"&gt;New&lt;/span&gt;
+&lt;/div&gt;
+
+<span class="ml-tok-comment">&lt;!-- availability row --&gt;</span>
+&lt;span class="ml-badge ml-badge--green"&gt;Opus 4.7&lt;/span&gt;
+&lt;span class="ml-badge ml-badge--green"&gt;Sonnet 4.6&lt;/span&gt;
+&lt;span class="ml-badge"&gt;Haiku 4.5&lt;/span&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BUTTONS
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-blue">09 · Buttons</span>
+      <h2 class="ml-title ml-title--md">Two variants, three sizes.</h2>
+      <p class="ml-lede">
+        Start with <code class="ml-pill">.ml-btn</code> and add a variant. Both variants inherit <code class="ml-pill">--ml-accent</code>, so they compose naturally with <code class="ml-pill">.ml-scope-{color}</code> and <code class="ml-pill">.ml-c-{color}</code>.
+      </p>
+
+      <div class="ml-stack">
+        <div>
+          <p class="doc-label">Variants</p>
+          <div class="ml-row" style="align-items: center;">
+            <button class="ml-btn ml-btn--primary">Primary</button>
+            <button class="ml-btn ml-btn--ghost">Ghost</button>
+            <button class="ml-btn ml-btn--primary" disabled>Disabled</button>
+          </div>
+        </div>
+
+        <div>
+          <p class="doc-label">Sizes</p>
+          <div class="ml-row" style="align-items: center;">
+            <button class="ml-btn ml-btn--primary ml-btn--sm">Small</button>
+            <button class="ml-btn ml-btn--primary">Default</button>
+            <button class="ml-btn ml-btn--primary ml-btn--lg">Large</button>
+            <button class="ml-btn ml-btn--ghost ml-btn--sm">Small</button>
+            <button class="ml-btn ml-btn--ghost">Default</button>
+            <button class="ml-btn ml-btn--ghost ml-btn--lg">Large</button>
+          </div>
+        </div>
+
+        <div>
+          <p class="doc-label">Color variants — primary uses <code class="ml-pill">.ml-scope-*</code>, ghost uses <code class="ml-pill">.ml-c-*</code></p>
+          <div class="ml-row" style="align-items: center;">
+            <button class="ml-btn ml-btn--primary ml-scope-blue">Blue</button>
+            <button class="ml-btn ml-btn--primary ml-scope-green">Green</button>
+            <button class="ml-btn ml-btn--primary ml-scope-red">Red</button>
+            <button class="ml-btn ml-btn--primary ml-scope-purple">Purple</button>
+            <button class="ml-btn ml-btn--ghost ml-c-blue">Blue</button>
+            <button class="ml-btn ml-btn--ghost ml-c-green">Green</button>
+            <button class="ml-btn ml-btn--ghost ml-c-red">Danger</button>
+            <button class="ml-btn ml-btn--ghost ml-c-purple">Purple</button>
+          </div>
+        </div>
+      </div>
+
+<pre class="ml-code"><span class="ml-tok-comment">&lt;!-- primary: use .ml-scope-* to avoid text-color conflict --&gt;</span>
+&lt;button class="ml-btn ml-btn--primary"&gt;Primary&lt;/button&gt;
+&lt;button class="ml-btn ml-btn--primary ml-scope-green"&gt;Green&lt;/button&gt;
+
+<span class="ml-tok-comment">&lt;!-- ghost: .ml-c-* or .ml-scope-* both work --&gt;</span>
+&lt;button class="ml-btn ml-btn--ghost"&gt;Ghost&lt;/button&gt;
+&lt;button class="ml-btn ml-btn--ghost ml-c-red"&gt;Danger&lt;/button&gt;
+
+<span class="ml-tok-comment">&lt;!-- sizes --&gt;</span>
+&lt;button class="ml-btn ml-btn--primary ml-btn--sm"&gt;Small&lt;/button&gt;
+&lt;button class="ml-btn ml-btn--primary ml-btn--lg"&gt;Large&lt;/button&gt;
+
+<span class="ml-tok-comment">&lt;!-- disabled --&gt;</span>
+&lt;button class="ml-btn ml-btn--primary" disabled&gt;Disabled&lt;/button&gt;</pre>
+
+      <p class="ml-footnote">
+        Use <code class="ml-pill">.ml-scope-{color}</code> on primary buttons — it sets <code class="ml-pill">--ml-accent</code> without overriding the button's own text color. Ghost buttons can take either modifier since they already render text in <code class="ml-pill">--ml-accent</code>.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         FORM INPUTS
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-green">10 · Form inputs</span>
+      <h2 class="ml-title ml-title--md">One class for all input types.</h2>
+      <p class="ml-lede">
+        Apply <code class="ml-pill">.ml-input</code> to any <code class="ml-pill">&lt;input&gt;</code>, <code class="ml-pill">&lt;textarea&gt;</code>, or <code class="ml-pill">&lt;select&gt;</code>. Wrap with <code class="ml-pill">.ml-field</code> to group a label, input, and helper text together.
+      </p>
+
+      <div class="doc-example">
+        <div class="ml-field">
+          <label class="ml-label" for="ex-name">Display name</label>
+          <input class="ml-input" id="ex-name" type="text" placeholder="Jane Smith">
+          <p class="ml-helper">Appears on your public profile.</p>
+        </div>
+<pre class="ml-code">&lt;div class="ml-field"&gt;
+  &lt;label class="ml-label" for="name"&gt;Display name&lt;/label&gt;
+  &lt;input class="ml-input" id="name" type="text" placeholder="Jane Smith"&gt;
+  &lt;p class="ml-helper"&gt;Appears on your public profile.&lt;/p&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <div>
+        <p class="doc-label">Textarea &amp; select</p>
+        <div class="ml-grid ml-grid--2">
+          <div class="ml-field">
+            <label class="ml-label" for="ex-msg">Message</label>
+            <textarea class="ml-input" id="ex-msg" placeholder="Write something…"></textarea>
+          </div>
+          <div class="ml-field">
+            <label class="ml-label" for="ex-model">Model</label>
+            <select class="ml-input" id="ex-model">
+              <option>claude-opus-4-7</option>
+              <option>claude-sonnet-4-6</option>
+              <option>claude-haiku-4-5</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="doc-label">States — error &amp; disabled</p>
+        <div class="ml-grid ml-grid--2">
+          <div class="ml-field">
+            <label class="ml-label" for="ex-email">Email</label>
+            <input class="ml-input" id="ex-email" type="email" value="not-an-email" aria-invalid="true">
+            <p class="ml-helper ml-helper--error">Enter a valid email address.</p>
+          </div>
+          <div class="ml-field">
+            <label class="ml-label" for="ex-disabled">API key</label>
+            <input class="ml-input" id="ex-disabled" type="text" value="sk-ant-••••••••" disabled>
+            <p class="ml-helper">Contact an admin to rotate this key.</p>
+          </div>
+        </div>
+      </div>
+
+<pre class="ml-code"><span class="ml-tok-comment">&lt;!-- error: aria-invalid on input, --error modifier on helper --&gt;</span>
+&lt;div class="ml-field"&gt;
+  &lt;label class="ml-label" for="email"&gt;Email&lt;/label&gt;
+  &lt;input class="ml-input" id="email" type="email" aria-invalid="true"&gt;
+  &lt;p class="ml-helper ml-helper--error"&gt;Enter a valid email address.&lt;/p&gt;
+&lt;/div&gt;
+
+<span class="ml-tok-comment">&lt;!-- disabled --&gt;</span>
+&lt;input class="ml-input" type="text" disabled&gt;
+
+<span class="ml-tok-comment">&lt;!-- textarea --&gt;</span>
+&lt;textarea class="ml-input"&gt;&lt;/textarea&gt;
+
+<span class="ml-tok-comment">&lt;!-- select --&gt;</span>
+&lt;select class="ml-input"&gt;
+  &lt;option&gt;Option A&lt;/option&gt;
+  &lt;option&gt;Option B&lt;/option&gt;
+&lt;/select&gt;</pre>
+
+      <h3 class="ml-title ml-title--sm" style="margin-top: 24px">Composed form</h3>
+      <p class="ml-text">Use <code class="ml-pill">.ml-stack--sm</code> to space multiple fields, and a <code class="ml-pill">.ml-card</code> as the surface.</p>
+
+      <div class="ml-card ml-card--lg" style="max-width: 480px;">
+        <div class="ml-stack ml-stack--sm">
+          <div class="ml-field">
+            <label class="ml-label" for="cf-name">Full name</label>
+            <input class="ml-input" id="cf-name" type="text" placeholder="Jane Smith">
+          </div>
+          <div class="ml-field">
+            <label class="ml-label" for="cf-email">Email address</label>
+            <input class="ml-input" id="cf-email" type="email" placeholder="jane@example.com">
+          </div>
+          <div class="ml-field">
+            <label class="ml-label" for="cf-role">Role</label>
+            <select class="ml-input" id="cf-role">
+              <option>Engineer</option>
+              <option>Designer</option>
+              <option>Product</option>
+            </select>
+          </div>
+          <div class="ml-field">
+            <label class="ml-label" for="cf-bio">Bio</label>
+            <textarea class="ml-input" id="cf-bio" placeholder="A short description…"></textarea>
+          </div>
+          <div class="ml-row" style="margin-top: 8px;">
+            <button class="ml-btn ml-btn--primary">Save changes</button>
+            <button class="ml-btn ml-btn--ghost">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ALERTS
+         ============================================================ -->
+    <section class="doc-section ml-stack">
+      <span class="ml-eyebrow ml-c-yellow">11 · Alerts</span>
+      <h2 class="ml-title ml-title--md">Inline callouts for messages and notices.</h2>
+      <p class="ml-lede">
+        Add <code class="ml-pill">.ml-alert</code> with a <code class="ml-pill">.ml-scope-{color}</code> to set the semantic variant. An optional <code class="ml-pill">.ml-alert__title</code> adds a heading line above the body.
+      </p>
+
+      <div class="ml-stack ml-stack--sm">
+        <div class="ml-alert ml-scope-blue">
+          <p>Cache TTL is 5 minutes. Content unchanged within that window is served from cache at 10% of input token cost.</p>
+        </div>
+        <div class="ml-alert ml-scope-green">
+          <p>Prompt cache is warm. Estimated savings this session: ~$0.84.</p>
+        </div>
+        <div class="ml-alert ml-scope-yellow">
+          <p>Context window is 78% full. Consider compacting the conversation or starting a new session.</p>
+        </div>
+        <div class="ml-alert ml-scope-red">
+          <h5 class="ml-alert__title">Cache invalidated</h5>
+          <p>A change to the system prompt prefix broke the cache chain. Downstream blocks were re-billed at full input cost.</p>
+        </div>
+      </div>
+
+<pre class="ml-code"><span class="ml-tok-comment">&lt;!-- info (blue) --&gt;</span>
+&lt;div class="ml-alert ml-scope-blue"&gt;
+  &lt;p&gt;Cache TTL is 5 minutes.&lt;/p&gt;
+&lt;/div&gt;
+
+<span class="ml-tok-comment">&lt;!-- success (green) --&gt;</span>
+&lt;div class="ml-alert ml-scope-green"&gt;
+  &lt;p&gt;Cache is warm. Savings: ~$0.84.&lt;/p&gt;
+&lt;/div&gt;
+
+<span class="ml-tok-comment">&lt;!-- warning (yellow) --&gt;</span>
+&lt;div class="ml-alert ml-scope-yellow"&gt;
+  &lt;p&gt;Context window 78% full.&lt;/p&gt;
+&lt;/div&gt;
+
+<span class="ml-tok-comment">&lt;!-- danger with title (red) --&gt;</span>
+&lt;div class="ml-alert ml-scope-red"&gt;
+  &lt;h5 class="ml-alert__title"&gt;Cache invalidated&lt;/h5&gt;
+  &lt;p&gt;System prompt change broke the cache chain.&lt;/p&gt;
+&lt;/div&gt;</pre>
+    </section>
+
+    <!-- ============================================================
          SEGMENTED BAR
          ============================================================ -->
     <section class="doc-section ml-stack">
-      <span class="ml-eyebrow ml-c-orange">08 · Segmented bar</span>
+      <span class="ml-eyebrow ml-c-orange">12 · Segmented bar</span>
       <h2 class="ml-title ml-title--md">Proportional categories in a horizontal bar.</h2>
       <p class="ml-lede">Set <code class="ml-pill">flex</code> on each segment with inline style to control proportion, and <code class="ml-pill">--ml-seg-color</code> for its color. Pair with a legend.</p>
 
@@ -413,7 +686,7 @@
          TABLE
          ============================================================ -->
     <section class="doc-section ml-stack">
-      <span class="ml-eyebrow ml-c-purple">09 · Table</span>
+      <span class="ml-eyebrow ml-c-purple">13 · Table</span>
       <h2 class="ml-title ml-title--md">Clean rows, uppercase header, no vertical rules.</h2>
 
       <table class="ml-table">
@@ -467,7 +740,7 @@
          COMPOSITION EXAMPLE
          ============================================================ -->
     <section class="doc-section ml-stack">
-      <span class="ml-eyebrow ml-c-red">10 · Putting it together</span>
+      <span class="ml-eyebrow ml-c-red">14 · Putting it together</span>
       <h2 class="ml-title ml-title--md">A full section composed from the primitives.</h2>
       <p class="ml-lede">Three accent-left cards with tagged headers — the classic "failure modes" layout.</p>
 
@@ -509,7 +782,7 @@
          CLASS REFERENCE
          ============================================================ -->
     <section class="doc-section ml-stack">
-      <span class="ml-eyebrow">11 · Class reference</span>
+      <span class="ml-eyebrow">15 · Class reference</span>
       <h2 class="ml-title ml-title--md">Everything at a glance.</h2>
 
       <table class="ml-table">
@@ -531,12 +804,20 @@
           <tr><td><code class="ml-pill">.ml-scope-{color}</code></td><td>Sets <code class="ml-pill">--ml-accent</code> for descendants without recoloring the element.</td></tr>
           <tr><td><code class="ml-pill">.ml-card</code> + <code class="ml-pill">--lg --sunken --accent --top --tinted</code></td><td>Card surface and variants. Most variants want a scope color.</td></tr>
           <tr><td><code class="ml-pill">.ml-card__title</code> / <code class="ml-pill">__tag</code> / <code class="ml-pill">__divider</code></td><td>Card internals — colored title, uppercase tag, horizontal rule.</td></tr>
+          <tr><td><code class="ml-pill">.ml-alert</code></td><td>Static callout block. Pair with <code class="ml-pill">.ml-scope-{color}</code> for semantic variants. Optional <code class="ml-pill">.ml-alert__title</code> adds a heading.</td></tr>
           <tr><td><code class="ml-pill">.ml-stat__value</code> / <code class="ml-pill">__label</code></td><td>Big accent number + caption. Use <code class="ml-pill">--sm --lg</code> on value to scale.</td></tr>
           <tr><td><code class="ml-pill">.ml-pill</code> + <code class="ml-pill">--blue/green/red/yellow/purple</code></td><td>Inline monospace tokens.</td></tr>
+          <tr><td><code class="ml-pill">.ml-badge</code> + <code class="ml-pill">--blue/green/red/yellow/purple/orange</code></td><td>Status label — sans-serif, pill-shaped, uppercase. Neutral by default; add a color modifier for semantic meaning.</td></tr>
           <tr><td><code class="ml-pill">.ml-code</code></td><td>Code block. Optional spans: <code class="ml-pill">.ml-tok-kw/str/num/comment/fn</code>.</td></tr>
           <tr><td><code class="ml-pill">.ml-segbar</code> + <code class="ml-pill">__seg</code></td><td>Horizontal segmented bar. Control proportion with <code class="ml-pill">flex</code>, color with <code class="ml-pill">--ml-seg-color</code>.</td></tr>
           <tr><td><code class="ml-pill">.ml-legend</code> + <code class="ml-pill">__item __dot</code></td><td>Color-dot legend for charts.</td></tr>
           <tr><td><code class="ml-pill">.ml-table</code></td><td>Base table with uppercase muted headers and row-only rules.</td></tr>
+          <tr><td><code class="ml-pill">.ml-field</code></td><td>Vertical wrapper for a label + input + helper group.</td></tr>
+          <tr><td><code class="ml-pill">.ml-label</code></td><td>Form label — 13px, medium weight, 6px bottom margin.</td></tr>
+          <tr><td><code class="ml-pill">.ml-input</code></td><td>Applies to <code class="ml-pill">&lt;input&gt;</code>, <code class="ml-pill">&lt;textarea&gt;</code>, <code class="ml-pill">&lt;select&gt;</code>. Full-width, surface-2 bg, accent focus ring.</td></tr>
+          <tr><td><code class="ml-pill">.ml-helper</code> / <code class="ml-pill">--error</code></td><td>Hint text below an input. <code class="ml-pill">--error</code> colors it red. Pair with <code class="ml-pill">aria-invalid="true"</code> on the input.</td></tr>
+          <tr><td><code class="ml-pill">.ml-btn</code> + <code class="ml-pill">--primary --ghost</code></td><td>Button base. Add a variant modifier. Inherits <code class="ml-pill">--ml-accent</code> — pair with <code class="ml-pill">.ml-scope-{color}</code> (primary) or <code class="ml-pill">.ml-c-{color}</code> (ghost) to recolor.</td></tr>
+          <tr><td><code class="ml-pill">.ml-btn--sm</code> / <code class="ml-pill">--lg</code></td><td>Size modifiers. Default is 14px · 9px 18px padding.</td></tr>
           <tr><td><code class="ml-pill">.ml-hr</code></td><td>Horizontal divider.</td></tr>
         </tbody>
       </table>
@@ -546,7 +827,7 @@
          THEMING
          ============================================================ -->
     <section class="doc-section ml-stack">
-      <span class="ml-eyebrow ml-c-green">12 · Theming</span>
+      <span class="ml-eyebrow ml-c-green">16 · Theming</span>
       <h2 class="ml-title ml-title--md">Two themes, one attribute.</h2>
       <p class="ml-lede">
         Set <code class="ml-pill">data-theme="dark"</code> (default) or <code class="ml-pill">data-theme="light"</code> on <code class="ml-pill">&lt;html&gt;</code> — or on any subtree you want to flip. The button in the top-right of this page does it with one line of JavaScript.
